@@ -2,11 +2,11 @@
 # -*- coding:utf-8 -*-
 
 try:
-    SocketServer as socketserver
+    import SocketServer as socketserver
 except ImportError:
     import socketserver
 
-class MyTCPHandler(SocketServer.BaseRequestHandler):
+class MyTCPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         self.data = self.request.recv(1024).strip()
         print("{} wrote:".format(self.client_address[0]))
